@@ -4,106 +4,333 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Email Confirmed - Poultriz</title>
 
   <style>
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
 
     body {
-      font-family: Arial, sans-serif;
-      background: #f5f7f4;
+      font-family: Arial, Helvetica, sans-serif;
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 20px;
+      background: #f3f9f5;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Background decoration */
+    body::before {
+      content: "";
+      position: absolute;
+      width: 450px;
+      height: 450px;
+      background: #e8f5ec;
+      border-radius: 50%;
+      top: -250px;
+      right: -150px;
+      opacity: 0.8;
+    }
+
+    body::after {
+      content: "";
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background: #e8f5ec;
+      border-radius: 50%;
+      bottom: -250px;
+      left: -150px;
+      opacity: 0.7;
     }
 
     .card {
-      background: #ffffff;
+      position: relative;
+      z-index: 1;
+
       width: 100%;
-      max-width: 420px;
-      padding: 45px 30px;
-      border-radius: 20px;
+      max-width: 850px;
+
+      background: #ffffff;
+
+      padding: 85px 60px;
+
+      border-radius: 22px;
+
       text-align: center;
-      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+
+      box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.08);
     }
 
-    .icon {
-      width: 75px;
-      height: 75px;
-      margin: 0 auto 25px;
+    /* Success icon */
+    .success-icon {
+      width: 135px;
+      height: 135px;
+
+      margin: 0 auto 45px;
+
       border-radius: 50%;
-      background: #22c55e;
-      color: white;
+
+      background: #20c46b;
+
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 40px;
+
+      position: relative;
+    }
+
+    .success-icon::before,
+    .success-icon::after {
+      content: "";
+      position: absolute;
+
+      width: 12px;
+      height: 35px;
+
+      background: #20c46b;
+
+      border-radius: 10px;
+    }
+
+    .success-icon::before {
+      left: -38px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .success-icon::after {
+      right: -38px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .checkmark {
+      width: 55px;
+      height: 30px;
+
+      border-left: 9px solid white;
+      border-bottom: 9px solid white;
+
+      transform: rotate(-45deg);
+
+      margin-top: -8px;
     }
 
     h1 {
-      color: #222;
-      font-size: 28px;
-      margin-bottom: 15px;
+      font-size: 52px;
+      line-height: 1.15;
+
+      color: #0c2118;
+
+      margin-bottom: 30px;
+
+      font-weight: 700;
     }
 
-    p {
-      color: #666;
-      font-size: 16px;
+    .message {
+      max-width: 650px;
+
+      margin: 0 auto;
+
+      font-size: 22px;
       line-height: 1.6;
-      margin-bottom: 28px;
+
+      color: #5d6875;
     }
 
-    .button {
-      display: inline-block;
-      width: 100%;
-      padding: 14px 20px;
-      background: #22c55e;
-      color: white;
-      text-decoration: none;
+    /* Divider */
+    .divider {
+      width: 360px;
+      max-width: 80%;
+
+      height: 3px;
+
+      background: #d9f2e3;
+
+      margin: 55px auto 40px;
+
       border-radius: 10px;
-      font-size: 16px;
-      font-weight: 600;
-      transition: 0.2s;
     }
 
-    .button:hover {
-      background: #16a34a;
-    }
-
+    /* Poultriz branding */
     .brand {
-      margin-top: 25px;
-      color: #999;
-      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      gap: 10px;
+
+      margin-bottom: 18px;
+    }
+
+    .leaf {
+      position: relative;
+
+      width: 35px;
+      height: 45px;
+    }
+
+    .leaf::before {
+      content: "";
+
+      position: absolute;
+
+      width: 23px;
+      height: 38px;
+
+      background: #20c46b;
+
+      border-radius: 100% 0 100% 0;
+
+      transform: rotate(35deg);
+
+      left: 5px;
+      top: 2px;
+    }
+
+    .leaf::after {
+      content: "";
+
+      position: absolute;
+
+      width: 3px;
+      height: 35px;
+
+      background: #ffffff;
+
+      transform: rotate(35deg);
+
+      left: 18px;
+      top: 7px;
+
+      opacity: 0.8;
+    }
+
+    .brand-name {
+      font-size: 30px;
+
+      font-weight: 700;
+
+      color: #16a85b;
+    }
+
+    .copyright {
+      font-size: 17px;
+
+      color: #77818d;
+    }
+
+    /* Mobile */
+    @media (max-width: 600px) {
+      body {
+        padding: 15px;
+      }
+
+      .card {
+        padding: 55px 25px;
+        border-radius: 18px;
+      }
+
+      .success-icon {
+        width: 95px;
+        height: 95px;
+
+        margin-bottom: 35px;
+      }
+
+      .checkmark {
+        width: 40px;
+        height: 23px;
+
+        border-left-width: 7px;
+        border-bottom-width: 7px;
+      }
+
+      .success-icon::before,
+      .success-icon::after {
+        width: 8px;
+        height: 25px;
+      }
+
+      .success-icon::before {
+        left: -25px;
+      }
+
+      .success-icon::after {
+        right: -25px;
+      }
+
+      h1 {
+        font-size: 34px;
+        margin-bottom: 22px;
+      }
+
+      .message {
+        font-size: 17px;
+        line-height: 1.6;
+      }
+
+      .divider {
+        margin: 40px auto 30px;
+      }
+
+      .brand-name {
+        font-size: 24px;
+      }
+
+      .copyright {
+        font-size: 14px;
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <div class="card">
-    <div class="icon">✓</div>
+  <main class="card">
 
+    <!-- Success Icon -->
+    <div class="success-icon">
+      <div class="checkmark"></div>
+    </div>
+
+    <!-- Heading -->
     <h1>Email Confirmed!</h1>
 
-    <p>
+    <!-- Message -->
+    <p class="message">
       Your email has been successfully confirmed.
-      You can now log in to your Poultriz app and start using your account.
+      You can now log in to your Poultriz app and
+      start using your account.
     </p>
 
-    <a href="#" class="button">
-      Open Poultriz
-    </a>
+    <!-- Divider -->
+    <div class="divider"></div>
 
+    <!-- Poultriz Brand -->
     <div class="brand">
+      <div class="leaf"></div>
+
+      <div class="brand-name">
+        Poultriz
+      </div>
+    </div>
+
+    <!-- Copyright -->
+    <div class="copyright">
       © 2026 Poultriz
     </div>
-  </div>
+
+  </main>
 
 </body>
 </html>
