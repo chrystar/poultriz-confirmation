@@ -3,7 +3,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+  />
 
   <title>Email Confirmed - Poultriz</title>
 
@@ -14,43 +17,70 @@
       box-sizing: border-box;
     }
 
+    html,
+    body {
+      width: 100%;
+      min-height: 100%;
+    }
+
     body {
       font-family: Arial, Helvetica, sans-serif;
+
       min-height: 100vh;
+      min-height: 100dvh;
+
       display: flex;
       align-items: center;
       justify-content: center;
+
       padding: 20px;
+
       background: #f3f9f5;
+
       position: relative;
-      overflow: hidden;
+      overflow-x: hidden;
     }
 
     /* Background decoration */
     body::before {
       content: "";
-      position: absolute;
+      position: fixed;
+
       width: 450px;
       height: 450px;
+
       background: #e8f5ec;
+
       border-radius: 50%;
-      top: -250px;
-      right: -150px;
+
+      top: -260px;
+      right: -180px;
+
       opacity: 0.8;
+
+      pointer-events: none;
     }
 
     body::after {
       content: "";
-      position: absolute;
+      position: fixed;
+
       width: 400px;
       height: 400px;
+
       background: #e8f5ec;
+
       border-radius: 50%;
-      bottom: -250px;
-      left: -150px;
+
+      bottom: -260px;
+      left: -180px;
+
       opacity: 0.7;
+
+      pointer-events: none;
     }
 
+    /* Main card */
     .card {
       position: relative;
       z-index: 1;
@@ -60,9 +90,9 @@
 
       background: #ffffff;
 
-      padding: 85px 60px;
+      padding: 80px 60px;
 
-      border-radius: 22px;
+      border-radius: 24px;
 
       text-align: center;
 
@@ -72,10 +102,10 @@
 
     /* Success icon */
     .success-icon {
-      width: 135px;
-      height: 135px;
+      width: 130px;
+      height: 130px;
 
-      margin: 0 auto 45px;
+      margin: 0 auto 42px;
 
       border-radius: 50%;
 
@@ -91,10 +121,11 @@
     .success-icon::before,
     .success-icon::after {
       content: "";
+
       position: absolute;
 
-      width: 12px;
-      height: 35px;
+      width: 11px;
+      height: 32px;
 
       background: #20c46b;
 
@@ -102,46 +133,54 @@
     }
 
     .success-icon::before {
-      left: -38px;
+      left: -34px;
       top: 50%;
+
       transform: translateY(-50%);
     }
 
     .success-icon::after {
-      right: -38px;
+      right: -34px;
       top: 50%;
+
       transform: translateY(-50%);
     }
 
+    /* Checkmark */
     .checkmark {
-      width: 55px;
-      height: 30px;
+      width: 52px;
+      height: 29px;
 
-      border-left: 9px solid white;
-      border-bottom: 9px solid white;
+      border-left: 9px solid #ffffff;
+      border-bottom: 9px solid #ffffff;
 
       transform: rotate(-45deg);
 
       margin-top: -8px;
     }
 
+    /* Heading */
     h1 {
-      font-size: 52px;
+      font-size: clamp(34px, 6vw, 52px);
+
       line-height: 1.15;
 
       color: #0c2118;
 
-      margin-bottom: 30px;
+      margin-bottom: 28px;
 
       font-weight: 700;
     }
 
+    /* Message */
     .message {
+      width: 100%;
       max-width: 650px;
 
       margin: 0 auto;
 
-      font-size: 22px;
+      font-size: clamp(17px, 2.5vw, 22px);
+
       line-height: 1.6;
 
       color: #5d6875;
@@ -149,34 +188,36 @@
 
     /* Divider */
     .divider {
-      width: 360px;
-      max-width: 80%;
+      width: min(360px, 75%);
 
       height: 3px;
 
       background: #d9f2e3;
 
-      margin: 55px auto 40px;
+      margin: 50px auto 38px;
 
       border-radius: 10px;
     }
 
-    /* Poultriz branding */
+    /* Brand */
     .brand {
       display: flex;
+
       align-items: center;
       justify-content: center;
 
       gap: 10px;
 
-      margin-bottom: 18px;
+      margin-bottom: 16px;
     }
 
     .leaf {
       position: relative;
 
-      width: 35px;
-      height: 45px;
+      width: 34px;
+      height: 42px;
+
+      flex-shrink: 0;
     }
 
     .leaf::before {
@@ -216,7 +257,7 @@
     }
 
     .brand-name {
-      font-size: 30px;
+      font-size: clamp(24px, 4vw, 30px);
 
       font-weight: 700;
 
@@ -224,71 +265,233 @@
     }
 
     .copyright {
-      font-size: 17px;
+      font-size: 15px;
 
       color: #77818d;
     }
 
-    /* Mobile */
-    @media (max-width: 600px) {
+    /* -----------------------------
+       TABLET
+    ----------------------------- */
+    @media (max-width: 768px) {
       body {
-        padding: 15px;
+        padding: 18px;
       }
 
       .card {
-        padding: 55px 25px;
-        border-radius: 18px;
+        max-width: 600px;
+
+        padding: 65px 35px;
+
+        border-radius: 22px;
       }
 
       .success-icon {
-        width: 95px;
-        height: 95px;
+        width: 110px;
+        height: 110px;
 
         margin-bottom: 35px;
       }
 
       .checkmark {
-        width: 40px;
-        height: 23px;
+        width: 45px;
+        height: 26px;
 
-        border-left-width: 7px;
-        border-bottom-width: 7px;
+        border-left-width: 8px;
+        border-bottom-width: 8px;
       }
 
       .success-icon::before,
       .success-icon::after {
-        width: 8px;
-        height: 25px;
+        width: 9px;
+        height: 27px;
       }
 
       .success-icon::before {
-        left: -25px;
+        left: -29px;
       }
 
       .success-icon::after {
-        right: -25px;
+        right: -29px;
+      }
+
+      .divider {
+        margin-top: 42px;
+        margin-bottom: 32px;
+      }
+    }
+
+    /* -----------------------------
+       MOBILE
+    ----------------------------- */
+    @media (max-width: 480px) {
+      body {
+        padding: 14px;
+      }
+
+      body::before {
+        width: 280px;
+        height: 280px;
+
+        top: -170px;
+        right: -130px;
+      }
+
+      body::after {
+        width: 260px;
+        height: 260px;
+
+        bottom: -170px;
+        left: -130px;
+      }
+
+      .card {
+        width: 100%;
+
+        padding: 48px 22px 42px;
+
+        border-radius: 20px;
+
+        box-shadow:
+          0 12px 35px rgba(0, 0, 0, 0.07);
+      }
+
+      .success-icon {
+        width: 88px;
+        height: 88px;
+
+        margin-bottom: 30px;
+      }
+
+      .checkmark {
+        width: 37px;
+        height: 22px;
+
+        border-left-width: 7px;
+        border-bottom-width: 7px;
+
+        margin-top: -6px;
+      }
+
+      .success-icon::before,
+      .success-icon::after {
+        width: 7px;
+        height: 22px;
+      }
+
+      .success-icon::before {
+        left: -21px;
+      }
+
+      .success-icon::after {
+        right: -21px;
       }
 
       h1 {
         font-size: 34px;
-        margin-bottom: 22px;
+
+        margin-bottom: 20px;
       }
 
       .message {
-        font-size: 17px;
-        line-height: 1.6;
+        font-size: 16px;
+
+        line-height: 1.65;
+
+        max-width: 330px;
       }
 
       .divider {
-        margin: 40px auto 30px;
+        width: 70%;
+
+        height: 2px;
+
+        margin: 34px auto 28px;
+      }
+
+      .brand {
+        gap: 8px;
+
+        margin-bottom: 12px;
+      }
+
+      .leaf {
+        width: 29px;
+        height: 36px;
+      }
+
+      .leaf::before {
+        width: 20px;
+        height: 32px;
+      }
+
+      .leaf::after {
+        height: 29px;
+
+        left: 16px;
       }
 
       .brand-name {
-        font-size: 24px;
+        font-size: 23px;
       }
 
       .copyright {
-        font-size: 14px;
+        font-size: 13px;
+      }
+    }
+
+    /* -----------------------------
+       VERY SMALL PHONES
+    ----------------------------- */
+    @media (max-width: 360px) {
+      body {
+        padding: 10px;
+      }
+
+      .card {
+        padding: 40px 18px 35px;
+      }
+
+      .success-icon {
+        width: 78px;
+        height: 78px;
+
+        margin-bottom: 25px;
+      }
+
+      .checkmark {
+        width: 32px;
+        height: 19px;
+
+        border-left-width: 6px;
+        border-bottom-width: 6px;
+      }
+
+      .success-icon::before,
+      .success-icon::after {
+        width: 6px;
+        height: 19px;
+      }
+
+      .success-icon::before {
+        left: -18px;
+      }
+
+      .success-icon::after {
+        right: -18px;
+      }
+
+      h1 {
+        font-size: 30px;
+      }
+
+      .message {
+        font-size: 15px;
+      }
+
+      .divider {
+        margin-top: 30px;
+        margin-bottom: 24px;
       }
     }
   </style>
@@ -306,7 +509,7 @@
     <!-- Heading -->
     <h1>Email Confirmed!</h1>
 
-    <!-- Message -->
+    <!-- Confirmation Message -->
     <p class="message">
       Your email has been successfully confirmed.
       You can now log in to your Poultriz app and
@@ -316,7 +519,7 @@
     <!-- Divider -->
     <div class="divider"></div>
 
-    <!-- Poultriz Brand -->
+    <!-- Poultriz Branding -->
     <div class="brand">
       <div class="leaf"></div>
 
